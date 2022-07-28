@@ -14,6 +14,7 @@ namespace kanpur_gps_device.Services
         public static async Task<ResponseToDevice?> ProcessLogin(string imei, HttpClient _client)
         {
             var streamTask = _client.GetStreamAsync($"{_baseUrl}DataIntake/processLogin/{imei}");
+            Console.WriteLine($"{_baseUrl}DataIntake/processLogin/{imei}");
             return await JsonSerializer.DeserializeAsync<ResponseToDevice>(await streamTask);
         }
 
